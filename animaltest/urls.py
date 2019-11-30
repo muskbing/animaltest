@@ -19,5 +19,9 @@ from . import view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', view.hello)
+    path('',view.index),
+    path('hello/', view.hello),
+    path('animalapi/',view.animalapi),
+    path('imgAPI/',view.imgAPI),
+    path('getImage/',view.getImage)
 ]
