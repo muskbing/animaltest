@@ -1,13 +1,16 @@
 
+import sys
+import os
+sys.path.append(os.path.abspath(__file__))
 from aip import AipImageClassify
 
 '''
 This script is to test baidu API
 '''
 
-APP_ID ='17896377'
-API_KEY ='Fi71Yp0B0ivGB8SNj9BFdi0b'
-SECRET_KEY ='lwgXKw5suGRK3dYFnlSaRvVTWOoAIGES'
+# APP_ID ='17896377'
+# API_KEY ='Fi71Yp0B0ivGB8SNj9BFdi0b'
+# SECRET_KEY ='lwgXKw5suGRK3dYFnlSaRvVTWOoAIGES'
 
 class animalAPI:
     def __init__(self,id,key,secret):

@@ -2,13 +2,33 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 import os
 from django.conf import settings
-import sys
-#访问API的程序
-from animalAPI import animalAPI
+from aip import AipImageClassify
 
 APP_ID ='17896377'
 API_KEY ='Fi71Yp0B0ivGB8SNj9BFdi0b'
 SECRET_KEY ='lwgXKw5suGRK3dYFnlSaRvVTWOoAIGES'
+
+class animalAPI:
+    def __init__(self,id,key,secret):
+        self.id=id
+        self.key=key
+        self.secret=secret
+    
+    def get_file_content(self,filePath):
+        with open(filePath, 'rb') as fp:
+            return fp.read()
+
+    def query_api(self,filePath,options=None):
+        image=self.get_file_content(filePath)
+        client = AipImageClassify(self.id, self.key, self.secret)
+        res=client.advancedGeneral(image)['result']
+        res=sorted(res,key=lambda x:x['score'],reverse=True)
+        if len(res)>=3:
+            res=res[:3]
+            for r in res:
+                r['score']=float('%.2f' % (r['score']*100))
+        print(res)
+        return res
 
 def index(request):
     return HttpResponse("Hello,This is felix's homepage!")
