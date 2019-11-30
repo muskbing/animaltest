@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import os
 from django.conf import settings
 import sys
+#访问API的程序
 from animalAPI import animalAPI
 
 APP_ID ='17896377'
